@@ -10,8 +10,8 @@ RUN /usr/local/bin/python -m pip install --upgrade pip
 COPY ./asset/requirements.txt /opt/requirements.txt
 
 RUN pip install -r /opt/requirements.txt && \
-    pip freeze > /opt/requirements-result.txt && \
-    bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+    pip freeze > /opt/requirements-result.txt
+    # bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
 RUN mkdir /code && \
     mkdir /result && \
