@@ -47,7 +47,7 @@ class schedule:
         print('func_3: ', end_time - start_time)
 
 if __name__ == '__main__':
-    
+
     my_test = schedule()
 
     my_test.set_func_1('a')
