@@ -1,6 +1,5 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from pyspark.sql.functions import col
 
 spark = SparkSession \
         .builder \
@@ -25,13 +24,15 @@ df = spark.createDataFrame(data = data, schema = schema)
 
 df.show()
 
-df.select('name').distinct().show()
+df_unique_name = df.select('name').distinct()
+df_unique_name.show()
 
-# dataframe.select('student Name').rdd.flatMap(lambda x: x).collect())
-# import pandas as pd
+# 방법 1과 방법 2 둘다 동일한 결과지만, 방법 2가 더 빠르다
 
-# df.select('name').distinct().collect().toPandas().name.to_list()
+# 방법 1
+print(df.select('name').rdd.flatMap(lambda x: x).collect())
+print(df.select('name').distinct().rdd.flatMap(lambda x: x).collect())
 
-
-# df.printSchema()
-# df.show()
+# 방법 2
+print(list(df.select('name').toPandas()['name']))
+print(list(df.select('name').toPandas()['name'].unique()))
