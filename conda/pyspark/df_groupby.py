@@ -22,9 +22,13 @@ schema = StructType([ \
     ])
  
 df = spark.createDataFrame(data = data, schema = schema)
-
 df.printSchema()
 df.show()
 
-df_groupby = df.groupBy().sum()
+df_groupby = df.groupBy('name').sum()
+df_groupby.printSchema()
+df_groupby.show()
+
+df_groupby = df.groupBy('class').sum()
+df_groupby.printSchema()
 df_groupby.show()
