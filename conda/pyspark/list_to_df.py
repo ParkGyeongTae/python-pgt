@@ -8,10 +8,10 @@ spark = SparkSession \
         .getOrCreate()
 
 data = [
-    ("kim", 100),
-    ("kim", 90),
-    ("lee", 80),
-    ("lee", 70),
+    ('kim', 100),
+    ('kim', 90),
+    ('lee', 80),
+    ('lee', 70),
     ('park', 60)
     ]
 
