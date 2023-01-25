@@ -5,4 +5,4 @@
 ### conda create -n stock python==3.8 -y
 ### conda activate stock
 
-### conda install -c conda-forge pandas -y
+### conda install -c conda-forge pandas==1.5.3 -y
