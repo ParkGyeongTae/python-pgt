@@ -20,7 +20,7 @@ if __name__ == '__main__':
     result_dict = {}
 
     for day in moving_average_list:
-        result_dict[f'MA_{day}'] = [int(df_ks11.tail(day).sum() / day), int(df_kq11.tail(day).sum() / day)]
+        result_dict[f'avg_{day}'] = [int(df_ks11.tail(day).sum() / day), int(df_kq11.tail(day).sum() / day)]
 
     df_result = pd.DataFrame(result_dict).T
     df_result.columns = ['kospi', 'kodaq']
