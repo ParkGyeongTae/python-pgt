@@ -27,7 +27,7 @@ if __name__ == '__main__':
     df_db_hitek         = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_one_week)[['Close']]
     df_hanmi            = fdr.DataReader(symbol = get_stock_code('한미반도체'), start = before_one_week)[['Close']]
 
-    moving_average_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30, 35, 40, 45, 50, 60, 120, 200, 240, 360, 400, 480, 600, 720]
+    moving_average_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50, 60, 120, 200, 240, 360, 400, 480, 600, 720]
 
     result_dict = {}
 
