@@ -26,8 +26,6 @@ if __name__ == '__main__':
     df_samsung_elec     = fdr.DataReader(symbol = get_stock_code('삼성전자'), start = before_one_week)[['Close']]
     df_samsung_pre_elec = fdr.DataReader(symbol = get_stock_code('삼성전자우'), start = before_one_week)[['Close']]
     df_sk_hynix         = fdr.DataReader(symbol = get_stock_code('SK하이닉스'), start = before_one_week)[['Close']]
-    df_db_hitek         = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_one_week)[['Close']]
-    df_hanmi            = fdr.DataReader(symbol = get_stock_code('한미반도체'), start = before_one_week)[['Close']]
 
     moving_average_list = list(range(1, 61))
     # moving_average_list = list(range(1, 121))
@@ -40,12 +38,10 @@ if __name__ == '__main__':
             int(df_kospi.tail(day).sum() / day), 
             int(df_samsung_elec.tail(day).sum() / day), 
             int(df_samsung_pre_elec.tail(day).sum() / day), 
-            int(df_sk_hynix.tail(day).sum() / day),
-            int(df_db_hitek.tail(day).sum() / day),
-            int(df_hanmi.tail(day).sum() / day)]
+            int(df_sk_hynix.tail(day).sum() / day)]
 
     df_result = pd.DataFrame(result_dict).T
-    df_result.columns = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX', 'DB_HITEK', 'HANMI']
+    df_result.columns = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX']
 
     for column_name in df_result.columns:
         df_result[f'{column_name}_per'] = round(df_result[column_name] / df_result[column_name].iloc[0], 3) * 100
@@ -60,8 +56,6 @@ if __name__ == '__main__':
     plt.plot(df_result['index'].to_list()[::-1], df_result['SS_ELEC_per'].to_list(), label = 'SS_ELEC')
     plt.plot(df_result['index'].to_list()[::-1], df_result['SS_ELEC_PRE_per'].to_list(), label = 'SS_ELEC_PRE')
     plt.plot(df_result['index'].to_list()[::-1], df_result['SK_HINIX_per'].to_list(), label = 'SK_HINIX')
-    # plt.plot(df_result['index'].to_list()[::-1], df_result['DB_HITEK_per'].to_list(), label = 'DB_HITEK')
-    # plt.plot(df_result['index'].to_list()[::-1], df_result['HANMI_per'].to_list(), label = 'HANMI')
 
     plt.grid(axis = 'x')
     plt.grid(axis = 'y')
