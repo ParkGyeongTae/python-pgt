@@ -1,5 +1,5 @@
 '''
-pip install pandas,beautifulsoup4,finance-datareader -y
+pip install pandas,beautifulsoup4,finance-datareader,matplotlib -y
 '''
 
 import pandas as pd

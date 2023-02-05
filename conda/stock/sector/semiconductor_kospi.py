@@ -1,5 +1,5 @@
 '''
-pip install pandas,beautifulsoup4,finance-datareader -y
+pip install pandas,beautifulsoup4,finance-datareader,matplotlib -y
 '''
 
 import pandas as pd
@@ -29,8 +29,8 @@ if __name__ == '__main__':
     df_db_hitek         = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_one_week)[['Close']]
     df_hanmi            = fdr.DataReader(symbol = get_stock_code('한미반도체'), start = before_one_week)[['Close']]
 
-    # moving_average_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50, 60, 120, 200, 240, 360, 400, 480, 600, 720]
     moving_average_list = list(range(1, 61))
+    # moving_average_list = list(range(1, 121))
 
     result_dict = {}
 
@@ -51,8 +51,20 @@ if __name__ == '__main__':
         df_result[f'{column_name}_per'] = round(df_result[column_name] / df_result[column_name].iloc[0], 3) * 100
 
     df_result.reset_index(inplace = True)
-    df_result['index'].astype('int64')
-    print(df_result.dtypes)
-    # print(df_result['index'].to_list())
+    df_result = df_result.astype({'index': 'int64'})
 
+    df_result = df_result.sort_values(by = 'index', ascending = False)
 
+    plt.plot(df_result['index'].to_list()[::-1], df_result['USD/KRW_per'].to_list(), label = 'USD/KRW')
+    plt.plot(df_result['index'].to_list()[::-1], df_result['KOSPI_per'].to_list(), label = 'KOSPI')
+    plt.plot(df_result['index'].to_list()[::-1], df_result['SS_ELEC_per'].to_list(), label = 'SS_ELEC')
+    plt.plot(df_result['index'].to_list()[::-1], df_result['SS_ELEC_PRE_per'].to_list(), label = 'SS_ELEC_PRE')
+    plt.plot(df_result['index'].to_list()[::-1], df_result['SK_HINIX_per'].to_list(), label = 'SK_HINIX')
+    # plt.plot(df_result['index'].to_list()[::-1], df_result['DB_HITEK_per'].to_list(), label = 'DB_HITEK')
+    # plt.plot(df_result['index'].to_list()[::-1], df_result['HANMI_per'].to_list(), label = 'HANMI')
+
+    plt.grid(axis = 'x')
+    plt.grid(axis = 'y')
+
+    plt.legend()
+    plt.show()
