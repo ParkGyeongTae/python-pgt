@@ -19,7 +19,8 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_one_week = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
+    before_one_week = (datetime.now() - relativedelta(years = 1)).strftime('%Y-%m-%d')
+    # before_one_week = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
 
     df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_one_week)[['Close']]
     df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_one_week)[['Close']]
@@ -28,6 +29,10 @@ if __name__ == '__main__':
     df_result = pd.concat([df_exchange_rate, df_kospi, df_kosdaq], axis = 1, join = 'inner')
     df_result.columns = ['USD/KRW', 'KOSPI', 'KOSDAQ']
     df_result.reset_index(inplace = True)
+
+    df_result['USD/KRW'] = round((df_result['USD/KRW'] - (df_result['USD/KRW'].sum() / df_result['Date'].count())) / df_result['USD/KRW'] * 100, 2)
+    df_result['KOSPI']   = round((df_result['KOSPI'] - (df_result['KOSPI'].sum() / df_result['Date'].count())) / df_result['KOSPI'] * 100, 2)
+    df_result['KOSDAQ']  = round((df_result['KOSDAQ'] - (df_result['KOSDAQ'].sum() / df_result['Date'].count())) / df_result['KOSDAQ'] * 100, 2)
 
     plt.plot(df_result['Date'].to_list(), df_result['USD/KRW'].to_list(), label = 'USD/KRW')
     plt.plot(df_result['Date'].to_list(), df_result['KOSPI'].to_list(), label = 'KOSPI')
