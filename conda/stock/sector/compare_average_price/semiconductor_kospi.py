@@ -19,16 +19,18 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 5)).strftime('%Y-%m-%d')
 
     df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
     df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
     df_samsung_elec     = fdr.DataReader(symbol = get_stock_code('삼성전자'), start = before_standard)[['Close']]
     df_samsung_pre_elec = fdr.DataReader(symbol = get_stock_code('삼성전자우'), start = before_standard)[['Close']]
     df_sk_hynix         = fdr.DataReader(symbol = get_stock_code('SK하이닉스'), start = before_standard)[['Close']]
+    df_db_hitek         = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_standard)[['Close']]
+    df_hanmi            = fdr.DataReader(symbol = get_stock_code('한미반도체'), start = before_standard)[['Close']]
 
-    df_result = pd.concat([df_exchange_rate, df_kospi, df_samsung_elec, df_samsung_pre_elec, df_sk_hynix], axis = 1, join = 'inner')
-    df_result.columns = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX']
+    df_result = pd.concat([df_exchange_rate, df_kospi, df_samsung_elec, df_samsung_pre_elec, df_sk_hynix, df_db_hitek, df_hanmi], axis = 1, join = 'inner')
+    df_result.columns = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX', 'DB_HITEK', 'HANMI']
     df_result.reset_index(inplace = True)
 
     df_result['USD/KRW'] = round((df_result['USD/KRW'] - (df_result['USD/KRW'].sum() / df_result['Date'].count())) / df_result['USD/KRW'] * 100, 2)
@@ -36,6 +38,8 @@ if __name__ == '__main__':
     df_result['SS_ELEC'] = round((df_result['SS_ELEC'] - (df_result['SS_ELEC'].sum() / df_result['Date'].count())) / df_result['SS_ELEC'] * 100, 2)
     df_result['SS_ELEC_PRE'] = round((df_result['SS_ELEC_PRE'] - (df_result['SS_ELEC_PRE'].sum() / df_result['Date'].count())) / df_result['SS_ELEC_PRE'] * 100, 2)
     df_result['SK_HINIX'] = round((df_result['SK_HINIX'] - (df_result['SK_HINIX'].sum() / df_result['Date'].count())) / df_result['SK_HINIX'] * 100, 2)
+    df_result['DB_HITEK'] = round((df_result['DB_HITEK'] - (df_result['DB_HITEK'].sum() / df_result['Date'].count())) / df_result['DB_HITEK'] * 100, 2)
+    df_result['HANMI'] = round((df_result['HANMI'] - (df_result['HANMI'].sum() / df_result['Date'].count())) / df_result['HANMI'] * 100, 2)
 
     plt.figure(figsize=(12, 8))
 
@@ -44,6 +48,8 @@ if __name__ == '__main__':
     plt.plot(df_result['Date'], df_result['SS_ELEC'].to_list(), label = 'SS_ELEC')
     plt.plot(df_result['Date'], df_result['SS_ELEC_PRE'].to_list(), label = 'SS_ELEC_PRE')
     plt.plot(df_result['Date'], df_result['SK_HINIX'].to_list(), label = 'SK_HINIX')
+    plt.plot(df_result['Date'], df_result['DB_HITEK'].to_list(), label = 'DB_HITEK')
+    plt.plot(df_result['Date'], df_result['HANMI'].to_list(), label = 'HANMI')
 
     plt.grid(axis = 'x')
     plt.grid(axis = 'y')
