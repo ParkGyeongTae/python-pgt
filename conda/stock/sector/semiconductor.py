@@ -3,6 +3,8 @@ pip install pandas,beautifulsoup4,finance-datareader -y
 '''
 
 import pandas as pd
+import matplotlib.pyplot as plt
+
 import FinanceDataReader as fdr
 
 from datetime import datetime
@@ -27,12 +29,13 @@ if __name__ == '__main__':
     df_db_hitek         = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_one_week)[['Close']]
     df_hanmi            = fdr.DataReader(symbol = get_stock_code('한미반도체'), start = before_one_week)[['Close']]
 
-    moving_average_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50, 60, 120, 200, 240, 360, 400, 480, 600, 720]
+    # moving_average_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50, 60, 120, 200, 240, 360, 400, 480, 600, 720]
+    moving_average_list = list(range(1, 61))
 
     result_dict = {}
 
     for day in moving_average_list:
-        result_dict[f'avg_{day}'] = [
+        result_dict[f'{day}'] = [
             int(df_exchange_rate.tail(day).sum() / day), 
             int(df_kospi.tail(day).sum() / day), 
             int(df_samsung_elec.tail(day).sum() / day), 
@@ -47,4 +50,9 @@ if __name__ == '__main__':
     for column_name in df_result.columns:
         df_result[f'{column_name}_per'] = round(df_result[column_name] / df_result[column_name].iloc[0], 3) * 100
 
-    print(df_result)
+    df_result.reset_index(inplace = True)
+    df_result['index'].astype('int64')
+    print(df_result.dtypes)
+    # print(df_result['index'].to_list())
+
+
