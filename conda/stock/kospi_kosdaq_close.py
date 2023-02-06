@@ -19,15 +19,17 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_one_week = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
 
-    df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_one_week)[['Close']]
-    df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_one_week)[['Close']]
-    df_kosdaq           = fdr.DataReader(symbol = 'KQ11', start = before_one_week)[['Close']]
+    df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
+    df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
+    df_kosdaq           = fdr.DataReader(symbol = 'KQ11', start = before_standard)[['Close']]
 
     df_result = pd.concat([df_exchange_rate, df_kospi, df_kosdaq], axis = 1, join = 'inner')
     df_result.columns = ['USD/KRW', 'KOSPI', 'KOSDAQ']
     df_result.reset_index(inplace = True)
+
+    plt.figure(figsize=(20, 8))
 
     plt.plot(df_result['Date'].to_list(), df_result['USD/KRW'].to_list(), label = 'USD/KRW')
     plt.plot(df_result['Date'].to_list(), df_result['KOSPI'].to_list(), label = 'KOSPI')
