@@ -48,6 +48,14 @@ if __name__ == '__main__':
 
     stock_list = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX', 'DB_HITEK', 'HANMI']
 
+    for stock in stock_list:
+        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[0], 3) * 100
+        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[0], 3) * 100
+        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[0], 3) * 100
+        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[0], 3) * 100
+        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[0], 3) * 100
+        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[0], 3) * 100
+
     plt.figure(figsize=(20, 10))
 
     plt.subplot(3,2,1)
