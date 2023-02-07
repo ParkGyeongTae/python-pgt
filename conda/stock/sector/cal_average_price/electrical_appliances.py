@@ -44,12 +44,12 @@ if __name__ == '__main__':
     stock_list = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
 
     for stock in stock_list:
-        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[0], 3) * 100
-        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[0], 3) * 100
-        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[0], 3) * 100
-        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[0], 3) * 100
-        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[0], 3) * 100
-        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[0], 3) * 100
+        df_2_year[stock] = round((df_2_year[stock] - (df_2_year[stock].sum() / df_2_year['Date'].count())) / df_2_year[stock] * 100, 2)
+        df_1_year[stock] = round((df_1_year[stock] - (df_1_year[stock].sum() / df_1_year['Date'].count())) / df_1_year[stock] * 100, 2)
+        df_9_month[stock] = round((df_9_month[stock] - (df_9_month[stock].sum() / df_9_month['Date'].count())) / df_9_month[stock] * 100, 2)
+        df_6_month[stock] = round((df_6_month[stock] - (df_6_month[stock].sum() / df_6_month['Date'].count())) / df_6_month[stock] * 100, 2)
+        df_3_month[stock] = round((df_3_month[stock] - (df_3_month[stock].sum() / df_3_month['Date'].count())) / df_3_month[stock] * 100, 2)
+        df_1_month[stock] = round((df_1_month[stock] - (df_1_month[stock].sum() / df_1_month['Date'].count())) / df_1_month[stock] * 100, 2)
 
     plt.figure(figsize=(20, 10))
 
