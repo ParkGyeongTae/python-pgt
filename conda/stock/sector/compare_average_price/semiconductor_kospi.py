@@ -46,58 +46,20 @@ if __name__ == '__main__':
     df_3_month = df_3_month[df_3_month['Date'] > str(datetime.now() - relativedelta(months = 3))]
     df_1_month = df_1_month[df_1_month['Date'] > str(datetime.now() - relativedelta(months = 1))]
 
-    df_2_year['USD/KRW'] = round((df_2_year['USD/KRW'] - (df_2_year['USD/KRW'].sum() / df_2_year['Date'].count())) / df_2_year['USD/KRW'] * 100, 2)
-    df_2_year['KOSPI'] = round((df_2_year['KOSPI'] - (df_2_year['KOSPI'].sum() / df_2_year['Date'].count())) / df_2_year['KOSPI'] * 100, 2)
-    df_2_year['SS_ELEC'] = round((df_2_year['SS_ELEC'] - (df_2_year['SS_ELEC'].sum() / df_2_year['Date'].count())) / df_2_year['SS_ELEC'] * 100, 2)
-    df_2_year['SS_ELEC_PRE'] = round((df_2_year['SS_ELEC_PRE'] - (df_2_year['SS_ELEC_PRE'].sum() / df_2_year['Date'].count())) / df_2_year['SS_ELEC_PRE'] * 100, 2)
-    df_2_year['SK_HINIX'] = round((df_2_year['SK_HINIX'] - (df_2_year['SK_HINIX'].sum() / df_2_year['Date'].count())) / df_2_year['SK_HINIX'] * 100, 2)
-    df_2_year['DB_HITEK'] = round((df_2_year['DB_HITEK'] - (df_2_year['DB_HITEK'].sum() / df_2_year['Date'].count())) / df_2_year['DB_HITEK'] * 100, 2)
-    df_2_year['HANMI'] = round((df_2_year['HANMI'] - (df_2_year['HANMI'].sum() / df_2_year['Date'].count())) / df_2_year['HANMI'] * 100, 2)
+    stock_list = ['USD/KRW', 'KOSPI', 'SS_ELEC', 'SS_ELEC_PRE', 'SK_HINIX', 'DB_HITEK', 'HANMI']
 
-    df_1_year['USD/KRW'] = round((df_1_year['USD/KRW'] - (df_1_year['USD/KRW'].sum() / df_1_year['Date'].count())) / df_1_year['USD/KRW'] * 100, 2)
-    df_1_year['KOSPI'] = round((df_1_year['KOSPI'] - (df_1_year['KOSPI'].sum() / df_1_year['Date'].count())) / df_1_year['KOSPI'] * 100, 2)
-    df_1_year['SS_ELEC'] = round((df_1_year['SS_ELEC'] - (df_1_year['SS_ELEC'].sum() / df_1_year['Date'].count())) / df_1_year['SS_ELEC'] * 100, 2)
-    df_1_year['SS_ELEC_PRE'] = round((df_1_year['SS_ELEC_PRE'] - (df_1_year['SS_ELEC_PRE'].sum() / df_1_year['Date'].count())) / df_1_year['SS_ELEC_PRE'] * 100, 2)
-    df_1_year['SK_HINIX'] = round((df_1_year['SK_HINIX'] - (df_1_year['SK_HINIX'].sum() / df_1_year['Date'].count())) / df_1_year['SK_HINIX'] * 100, 2)
-    df_1_year['DB_HITEK'] = round((df_1_year['DB_HITEK'] - (df_1_year['DB_HITEK'].sum() / df_1_year['Date'].count())) / df_1_year['DB_HITEK'] * 100, 2)
-    df_1_year['HANMI'] = round((df_1_year['HANMI'] - (df_1_year['HANMI'].sum() / df_1_year['Date'].count())) / df_1_year['HANMI'] * 100, 2)
-
-    df_9_month['USD/KRW'] = round((df_9_month['USD/KRW'] - (df_9_month['USD/KRW'].sum() / df_9_month['Date'].count())) / df_9_month['USD/KRW'] * 100, 2)
-    df_9_month['KOSPI'] = round((df_9_month['KOSPI'] - (df_9_month['KOSPI'].sum() / df_9_month['Date'].count())) / df_9_month['KOSPI'] * 100, 2)
-    df_9_month['SS_ELEC'] = round((df_9_month['SS_ELEC'] - (df_9_month['SS_ELEC'].sum() / df_9_month['Date'].count())) / df_9_month['SS_ELEC'] * 100, 2)
-    df_9_month['SS_ELEC_PRE'] = round((df_9_month['SS_ELEC_PRE'] - (df_9_month['SS_ELEC_PRE'].sum() / df_9_month['Date'].count())) / df_9_month['SS_ELEC_PRE'] * 100, 2)
-    df_9_month['SK_HINIX'] = round((df_9_month['SK_HINIX'] - (df_9_month['SK_HINIX'].sum() / df_9_month['Date'].count())) / df_9_month['SK_HINIX'] * 100, 2)
-    df_9_month['DB_HITEK'] = round((df_9_month['DB_HITEK'] - (df_9_month['DB_HITEK'].sum() / df_9_month['Date'].count())) / df_9_month['DB_HITEK'] * 100, 2)
-    df_9_month['HANMI'] = round((df_9_month['HANMI'] - (df_9_month['HANMI'].sum() / df_9_month['Date'].count())) / df_9_month['HANMI'] * 100, 2)
-
-    df_6_month['USD/KRW'] = round((df_6_month['USD/KRW'] - (df_6_month['USD/KRW'].sum() / df_6_month['Date'].count())) / df_6_month['USD/KRW'] * 100, 2)
-    df_6_month['KOSPI'] = round((df_6_month['KOSPI'] - (df_6_month['KOSPI'].sum() / df_6_month['Date'].count())) / df_6_month['KOSPI'] * 100, 2)
-    df_6_month['SS_ELEC'] = round((df_6_month['SS_ELEC'] - (df_6_month['SS_ELEC'].sum() / df_6_month['Date'].count())) / df_6_month['SS_ELEC'] * 100, 2)
-    df_6_month['SS_ELEC_PRE'] = round((df_6_month['SS_ELEC_PRE'] - (df_6_month['SS_ELEC_PRE'].sum() / df_6_month['Date'].count())) / df_6_month['SS_ELEC_PRE'] * 100, 2)
-    df_6_month['SK_HINIX'] = round((df_6_month['SK_HINIX'] - (df_6_month['SK_HINIX'].sum() / df_6_month['Date'].count())) / df_6_month['SK_HINIX'] * 100, 2)
-    df_6_month['DB_HITEK'] = round((df_6_month['DB_HITEK'] - (df_6_month['DB_HITEK'].sum() / df_6_month['Date'].count())) / df_6_month['DB_HITEK'] * 100, 2)
-    df_6_month['HANMI'] = round((df_6_month['HANMI'] - (df_6_month['HANMI'].sum() / df_6_month['Date'].count())) / df_6_month['HANMI'] * 100, 2)
-
-    df_3_month['USD/KRW'] = round((df_3_month['USD/KRW'] - (df_3_month['USD/KRW'].sum() / df_3_month['Date'].count())) / df_3_month['USD/KRW'] * 100, 2)
-    df_3_month['KOSPI'] = round((df_3_month['KOSPI'] - (df_3_month['KOSPI'].sum() / df_3_month['Date'].count())) / df_3_month['KOSPI'] * 100, 2)
-    df_3_month['SS_ELEC'] = round((df_3_month['SS_ELEC'] - (df_3_month['SS_ELEC'].sum() / df_3_month['Date'].count())) / df_3_month['SS_ELEC'] * 100, 2)
-    df_3_month['SS_ELEC_PRE'] = round((df_3_month['SS_ELEC_PRE'] - (df_3_month['SS_ELEC_PRE'].sum() / df_3_month['Date'].count())) / df_3_month['SS_ELEC_PRE'] * 100, 2)
-    df_3_month['SK_HINIX'] = round((df_3_month['SK_HINIX'] - (df_3_month['SK_HINIX'].sum() / df_3_month['Date'].count())) / df_3_month['SK_HINIX'] * 100, 2)
-    df_3_month['DB_HITEK'] = round((df_3_month['DB_HITEK'] - (df_3_month['DB_HITEK'].sum() / df_3_month['Date'].count())) / df_3_month['DB_HITEK'] * 100, 2)
-    df_3_month['HANMI'] = round((df_3_month['HANMI'] - (df_3_month['HANMI'].sum() / df_3_month['Date'].count())) / df_3_month['HANMI'] * 100, 2)
-
-    df_1_month['USD/KRW'] = round((df_1_month['USD/KRW'] - (df_1_month['USD/KRW'].sum() / df_1_month['Date'].count())) / df_1_month['USD/KRW'] * 100, 2)
-    df_1_month['KOSPI'] = round((df_1_month['KOSPI'] - (df_1_month['KOSPI'].sum() / df_1_month['Date'].count())) / df_1_month['KOSPI'] * 100, 2)
-    df_1_month['SS_ELEC'] = round((df_1_month['SS_ELEC'] - (df_1_month['SS_ELEC'].sum() / df_1_month['Date'].count())) / df_1_month['SS_ELEC'] * 100, 2)
-    df_1_month['SS_ELEC_PRE'] = round((df_1_month['SS_ELEC_PRE'] - (df_1_month['SS_ELEC_PRE'].sum() / df_1_month['Date'].count())) / df_1_month['SS_ELEC_PRE'] * 100, 2)
-    df_1_month['SK_HINIX'] = round((df_1_month['SK_HINIX'] - (df_1_month['SK_HINIX'].sum() / df_1_month['Date'].count())) / df_1_month['SK_HINIX'] * 100, 2)
-    df_1_month['DB_HITEK'] = round((df_1_month['DB_HITEK'] - (df_1_month['DB_HITEK'].sum() / df_1_month['Date'].count())) / df_1_month['DB_HITEK'] * 100, 2)
-    df_1_month['HANMI'] = round((df_1_month['HANMI'] - (df_1_month['HANMI'].sum() / df_1_month['Date'].count())) / df_1_month['HANMI'] * 100, 2)
+    for stock in stock_list:
+        df_2_year[stock] = round((df_2_year[stock] - (df_2_year[stock].sum() / df_2_year['Date'].count())) / df_2_year[stock] * 100, 2)
+        df_1_year[stock] = round((df_1_year[stock] - (df_1_year[stock].sum() / df_1_year['Date'].count())) / df_1_year[stock] * 100, 2)
+        df_9_month[stock] = round((df_9_month[stock] - (df_9_month[stock].sum() / df_9_month['Date'].count())) / df_9_month[stock] * 100, 2)
+        df_6_month[stock] = round((df_6_month[stock] - (df_6_month[stock].sum() / df_6_month['Date'].count())) / df_6_month[stock] * 100, 2)
+        df_3_month[stock] = round((df_3_month[stock] - (df_3_month[stock].sum() / df_3_month['Date'].count())) / df_3_month[stock] * 100, 2)
+        df_1_month[stock] = round((df_1_month[stock] - (df_1_month[stock].sum() / df_1_month['Date'].count())) / df_1_month[stock] * 100, 2)
 
     plt.figure(figsize=(20, 10))
 
     plt.subplot(3,2,1)
-    plt.title('before 2 years')
+    # plt.title('before 2 years')
     plt.plot(df_2_year['Date'], df_2_year['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_2_year['Date'], df_2_year['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_2_year['Date'], df_2_year['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
@@ -110,7 +72,7 @@ if __name__ == '__main__':
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,2)
-    plt.title('before 1 years')
+    # plt.title('before 1 years')
     plt.plot(df_1_year['Date'], df_1_year['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_1_year['Date'], df_1_year['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_1_year['Date'], df_1_year['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
@@ -123,7 +85,7 @@ if __name__ == '__main__':
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,3)
-    plt.title('before 9 months')
+    # plt.title('before 9 months')
     plt.plot(df_9_month['Date'], df_9_month['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_9_month['Date'], df_9_month['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_9_month['Date'], df_9_month['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
@@ -136,7 +98,7 @@ if __name__ == '__main__':
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,4)
-    plt.title('before 6 months')
+    # plt.title('before 6 months')
     plt.plot(df_6_month['Date'], df_6_month['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_6_month['Date'], df_6_month['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_6_month['Date'], df_6_month['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
@@ -149,7 +111,7 @@ if __name__ == '__main__':
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,5)
-    plt.title('before 3 months')
+    # plt.title('before 3 months')
     plt.plot(df_3_month['Date'], df_3_month['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_3_month['Date'], df_3_month['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_3_month['Date'], df_3_month['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
@@ -162,7 +124,7 @@ if __name__ == '__main__':
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,6)
-    plt.title('before 1 months')
+    # plt.title('before 1 months')
     plt.plot(df_1_month['Date'], df_1_month['USD/KRW'].to_list(), label = 'USD/KRW', linewidth = '1')
     plt.plot(df_1_month['Date'], df_1_month['KOSPI'].to_list(), label = 'KOSPI', linewidth = '2')
     plt.plot(df_1_month['Date'], df_1_month['SS_ELEC'].to_list(), label = 'SS_ELEC', linewidth = '1')
