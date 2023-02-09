@@ -21,16 +21,16 @@ if __name__ == '__main__':
 
     before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
 
-    df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
-    df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
-    df_lg_energy        = fdr.DataReader(symbol = get_stock_code('LG에너지솔루션'), start = before_standard)[['Close']]
-    df_samsung_sdi      = fdr.DataReader(symbol = get_stock_code('삼성SDI'), start = before_standard)[['Close']]
-    df_echoprobm        = fdr.DataReader(symbol = get_stock_code('에코프로비엠'), start = before_standard)[['Close']]
-    df_lnf              = fdr.DataReader(symbol = get_stock_code('엘앤에프'), start = before_standard)[['Close']]
-    df_ski_tech         = fdr.DataReader(symbol = get_stock_code('SK아이이테크놀로지'), start = before_standard)[['Close']]
+    df_exchange_rate = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
+    df_kospi = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
+    df_kb = fdr.DataReader(symbol = get_stock_code('KB금융'), start = before_standard)[['Close']]
+    df_shinhan = fdr.DataReader(symbol = get_stock_code('신한지주'), start = before_standard)[['Close']]
+    df_hana = fdr.DataReader(symbol = get_stock_code('하나금융지주'), start = before_standard)[['Close']]
+    df_kabang = fdr.DataReader(symbol = get_stock_code('카카오뱅크'), start = before_standard)[['Close']]
+    df_ibk = fdr.DataReader(symbol = get_stock_code('기업은행'), start = before_standard)[['Close']]
 
-    df = pd.concat([df_exchange_rate, df_kospi, df_lg_energy, df_samsung_sdi, df_echoprobm, df_lnf, df_ski_tech], axis = 1, join = 'inner')
-    stock_list = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
+    df = pd.concat([df_exchange_rate, df_kospi, df_kb, df_shinhan, df_hana, df_kabang, df_ibk], axis = 1, join = 'inner')
+    stock_list = ['USD/KRW', 'KOSPI', 'KB', 'SHINHAN', 'HANA', 'KABANG', 'IBK']
     df.columns = stock_list
     df.reset_index(inplace = True)
 
@@ -43,12 +43,12 @@ if __name__ == '__main__':
     df_1_month = df_1_month[df_1_month['Date'] > str(datetime.now() - relativedelta(months = 1))]
 
     for stock in stock_list:
-        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[-1], 3) * 100
-        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[-1], 3) * 100
-        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[-1], 3) * 100
-        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[-1], 3) * 100
-        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[-1], 3) * 100
-        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[-1], 3) * 100
+        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[0], 3) * 100
+        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[0], 3) * 100
+        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[0], 3) * 100
+        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[0], 3) * 100
+        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[0], 3) * 100
+        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[0], 3) * 100
 
     plt.figure(figsize=(20, 10))
 

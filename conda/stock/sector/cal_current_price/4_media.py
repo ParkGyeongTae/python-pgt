@@ -40,12 +40,12 @@ if __name__ == '__main__':
     df_1_month = df_1_month[df_1_month['Date'] > str(datetime.now() - relativedelta(months = 1))]
 
     for stock in stock_list:
-        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[0], 3) * 100
-        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[0], 3) * 100
-        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[0], 3) * 100
-        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[0], 3) * 100
-        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[0], 3) * 100
-        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[0], 3) * 100
+        df_2_year[stock] = round(df_2_year[stock] / df_2_year[stock].iloc[-1], 3) * 100
+        df_1_year[stock] = round(df_1_year[stock] / df_1_year[stock].iloc[-1], 3) * 100
+        df_9_month[stock] = round(df_9_month[stock] / df_9_month[stock].iloc[-1], 3) * 100
+        df_6_month[stock] = round(df_6_month[stock] / df_6_month[stock].iloc[-1], 3) * 100
+        df_3_month[stock] = round(df_3_month[stock] / df_3_month[stock].iloc[-1], 3) * 100
+        df_1_month[stock] = round(df_1_month[stock] / df_1_month[stock].iloc[-1], 3) * 100
 
     plt.figure(figsize=(20, 10))
 
