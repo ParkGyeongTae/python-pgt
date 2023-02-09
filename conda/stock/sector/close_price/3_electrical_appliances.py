@@ -30,19 +30,17 @@ if __name__ == '__main__':
     df_ski_tech         = fdr.DataReader(symbol = get_stock_code('SK아이이테크놀로지'), start = before_standard)[['Close']]
 
     df = pd.concat([df_exchange_rate, df_kospi, df_lg_energy, df_samsung_sdi, df_echoprobm, df_lnf, df_ski_tech], axis = 1, join = 'inner')
-    df.columns = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
+    stock_list = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
+    df.columns = stock_list
     df.reset_index(inplace = True)
 
-    df_copy = df.copy()
+    df_2_year, df_1_year, df_9_month, df_6_month, df_3_month, df_1_month = df.copy(), df.copy(), df.copy(), df.copy(), df.copy(), df.copy()
 
-    df_2_year = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(years = 2))]
-    df_1_year = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(years = 1))]
-    df_9_month = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(months = 9))]
-    df_6_month = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(months = 6))]
-    df_3_month = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(months = 3))]
-    df_1_month = df_copy[df_copy['Date'] > str(datetime.now() - relativedelta(months = 1))]
-
-    stock_list = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
+    df_1_year = df_1_year[df_1_year['Date'] > str(datetime.now() - relativedelta(years = 1))]
+    df_9_month = df_9_month[df_9_month['Date'] > str(datetime.now() - relativedelta(months = 9))]
+    df_6_month = df_6_month[df_6_month['Date'] > str(datetime.now() - relativedelta(months = 6))]
+    df_3_month = df_3_month[df_3_month['Date'] > str(datetime.now() - relativedelta(months = 3))]
+    df_1_month = df_1_month[df_1_month['Date'] > str(datetime.now() - relativedelta(months = 1))]
 
     plt.figure(figsize=(20, 10))
 

@@ -21,16 +21,14 @@ if __name__ == '__main__':
 
     before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
 
-    df_exchange_rate    = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
-    df_kospi            = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
-    df_lg_energy        = fdr.DataReader(symbol = get_stock_code('LG에너지솔루션'), start = before_standard)[['Close']]
-    df_samsung_sdi      = fdr.DataReader(symbol = get_stock_code('삼성SDI'), start = before_standard)[['Close']]
-    df_echoprobm        = fdr.DataReader(symbol = get_stock_code('에코프로비엠'), start = before_standard)[['Close']]
-    df_lnf              = fdr.DataReader(symbol = get_stock_code('엘앤에프'), start = before_standard)[['Close']]
-    df_ski_tech         = fdr.DataReader(symbol = get_stock_code('SK아이이테크놀로지'), start = before_standard)[['Close']]
+    df_exchange_rate = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)[['Close']]
+    df_kospi         = fdr.DataReader(symbol = 'KS11', start = before_standard)[['Close']]
+    df_naver         = fdr.DataReader(symbol = get_stock_code('NAVER'), start = before_standard)[['Close']]
+    df_kakao         = fdr.DataReader(symbol = get_stock_code('카카오'), start = before_standard)[['Close']]
 
-    df = pd.concat([df_exchange_rate, df_kospi, df_lg_energy, df_samsung_sdi, df_echoprobm, df_lnf, df_ski_tech], axis = 1, join = 'inner')
-    df.columns = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
+    df = pd.concat([df_exchange_rate, df_kospi, df_naver, df_kakao], axis = 1, join = 'inner')
+    stock_list = ['USD/KRW', 'KOSPI', 'NAVER', 'KAKAO']
+    df.columns = stock_list
     df.reset_index(inplace = True)
 
     df_2_year, df_1_year, df_9_month, df_6_month, df_3_month, df_1_month = df.copy(), df.copy(), df.copy(), df.copy(), df.copy(), df.copy()
@@ -40,16 +38,6 @@ if __name__ == '__main__':
     df_6_month = df_6_month[df_6_month['Date'] > str(datetime.now() - relativedelta(months = 6))]
     df_3_month = df_3_month[df_3_month['Date'] > str(datetime.now() - relativedelta(months = 3))]
     df_1_month = df_1_month[df_1_month['Date'] > str(datetime.now() - relativedelta(months = 1))]
-
-    stock_list = ['USD/KRW', 'KOSPI', 'LG_ENSOL', 'SS_SDI', 'ECHOPROBM', 'LNF', 'SKI_TECH']
-
-    for stock in stock_list:
-        df_2_year[stock] = round((df_2_year[stock] - (df_2_year[stock].sum() / df_2_year['Date'].count())) / df_2_year[stock] * 100, 2)
-        df_1_year[stock] = round((df_1_year[stock] - (df_1_year[stock].sum() / df_1_year['Date'].count())) / df_1_year[stock] * 100, 2)
-        df_9_month[stock] = round((df_9_month[stock] - (df_9_month[stock].sum() / df_9_month['Date'].count())) / df_9_month[stock] * 100, 2)
-        df_6_month[stock] = round((df_6_month[stock] - (df_6_month[stock].sum() / df_6_month['Date'].count())) / df_6_month[stock] * 100, 2)
-        df_3_month[stock] = round((df_3_month[stock] - (df_3_month[stock].sum() / df_3_month['Date'].count())) / df_3_month[stock] * 100, 2)
-        df_1_month[stock] = round((df_1_month[stock] - (df_1_month[stock].sum() / df_1_month['Date'].count())) / df_1_month[stock] * 100, 2)
 
     plt.figure(figsize=(20, 10))
 
