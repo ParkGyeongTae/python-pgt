@@ -47,36 +47,42 @@ if __name__ == '__main__':
     plt.subplot(3,2,1)
     for stock in stock_list:
         plt.plot(df_2_year['Date'], df_2_year[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('2 Years')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,2)
     for stock in stock_list:
         plt.plot(df_1_year['Date'], df_1_year[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('1 Years')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,3)
     for stock in stock_list:
         plt.plot(df_9_month['Date'], df_9_month[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('9 Months')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,4)
     for stock in stock_list:
         plt.plot(df_6_month['Date'], df_6_month[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('6 Months')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,5)
     for stock in stock_list:
         plt.plot(df_3_month['Date'], df_3_month[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('3 Months')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
     plt.subplot(3,2,6)
     for stock in stock_list:
         plt.plot(df_1_month['Date'], df_1_month[stock].to_list(), label = stock, linewidth = '1')
+    plt.title('1 Months')
     plt.grid(True)
     plt.legend(fontsize = 6)
 
