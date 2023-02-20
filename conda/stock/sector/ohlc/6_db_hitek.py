@@ -18,7 +18,7 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 5)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 4)).strftime('%Y-%m-%d')
     df_db_hitek = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_standard)
     df_db_hitek = df_db_hitek[['Open', 'High', 'Low', 'Close']]
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     qf = cf.QuantFig(
         df_db_hitek,
-        title = 'DB하이텍(5 Years)',
+        title = 'DB하이텍(4 Years)',
         legend = 'top',
         name = 'DB하이텍',
         up_color = 'red',

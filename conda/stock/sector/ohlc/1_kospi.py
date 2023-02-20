@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     qf = cf.QuantFig(
         df_kospi,
-        title = 'KOSPI(5 Years)',
+        title = 'KOSPI(4 Years)',
         legend = 'top',
         name = 'KOSPI',
         up_color = 'red',
