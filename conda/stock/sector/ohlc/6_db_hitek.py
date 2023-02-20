@@ -11,17 +11,22 @@ import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+def get_stock_code(name):
+    df = fdr.StockListing('KRX')
+    stock_code = df[df['Name'] == name]['Code'].to_string(index = False)
+    return stock_code
+
 if __name__ == '__main__':
 
     before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
-    df_kospi = fdr.DataReader(symbol = 'KS11', start = before_standard)
-    df_kospi = df_kospi[['Open', 'High', 'Low', 'Close']]
+    df_db_hitek = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_standard)
+    df_db_hitek = df_db_hitek[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
-        df_kospi,
-        title = 'Kospi 2 years',
+        df_db_hitek,
+        title = 'DB하이텍 2 years',
         legend = 'top',
-        name = 'Kospi',
+        name = 'DB하이텍',
         up_color = 'red',
         down_color = 'blue'
     )

@@ -21,7 +21,6 @@ if __name__ == '__main__':
     before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
     df_samsung_elec = fdr.DataReader(symbol = get_stock_code('삼성전자'), start = before_standard)
     df_samsung_elec = df_samsung_elec[['Open', 'High', 'Low', 'Close']]
-    df_samsung_elec.reset_index(inplace = True)
 
     qf = cf.QuantFig(
         df_samsung_elec,

@@ -16,7 +16,6 @@ if __name__ == '__main__':
     before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
     df_kosdaq = fdr.DataReader(symbol = 'KQ11', start = before_standard)
     df_kosdaq = df_kosdaq[['Open', 'High', 'Low', 'Close']]
-    df_kosdaq.reset_index(inplace = True)
 
     qf = cf.QuantFig(
         df_kosdaq,
