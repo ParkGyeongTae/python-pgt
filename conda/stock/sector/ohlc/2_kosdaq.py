@@ -13,15 +13,15 @@ from dateutil.relativedelta import relativedelta
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 5)).strftime('%Y-%m-%d')
     df_kosdaq = fdr.DataReader(symbol = 'KQ11', start = before_standard)
     df_kosdaq = df_kosdaq[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
         df_kosdaq,
-        title = 'Kosdaq 2 years',
+        title = 'KOSDAQ(5 Years)',
         legend = 'top',
-        name = 'Kosdaq',
+        name = 'KOSDAQ',
         up_color = 'red',
         down_color = 'blue'
     )

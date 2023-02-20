@@ -18,17 +18,19 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 5)).strftime('%Y-%m-%d')
     df_db_hitek = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_standard)
     df_db_hitek = df_db_hitek[['Open', 'High', 'Low', 'Close']]
 
+    # for i in df_db_hitek.columns:
+    #     df_db_hitek[i] = round((df_db_hitek[i] - (df_db_hitek[i].sum() / len(df_db_hitek))) / df_db_hitek[i] * 100, 2)
+
     qf = cf.QuantFig(
         df_db_hitek,
-        title = 'DB하이텍 2 years',
+        title = 'DB하이텍(5 Years)',
         legend = 'top',
         name = 'DB하이텍',
         up_color = 'red',
-        down_color = 'blue'
-    )
+        down_color = 'blue')
 
     plyo.iplot(qf.iplot(asFigure = True))

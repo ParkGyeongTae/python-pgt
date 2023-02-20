@@ -13,15 +13,15 @@ from dateutil.relativedelta import relativedelta
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 2)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 5)).strftime('%Y-%m-%d')
     df_exchange_rate = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)
     df_exchange_rate = df_exchange_rate[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
         df_exchange_rate,
-        title = 'Exchange Rate 2 years',
+        title = '환율(5 Years)',
         legend = 'top',
-        name = 'Exchange Rate',
+        name = '환율',
         up_color = 'red',
         down_color = 'blue'
     )
