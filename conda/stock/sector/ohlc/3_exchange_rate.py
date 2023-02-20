@@ -18,7 +18,7 @@ if __name__ == '__main__':
     df_exchange_rate = df_exchange_rate[['Open', 'High', 'Low', 'Close']]
 
     # for i in df_exchange_rate.columns:
-    #     df_exchange_rate[i] = round((df_exchange_rate[i] - (df_exchange_rate[i].sum() / len(df_exchange_rate))) / df_exchange_rate[i] * 100, 2)
+    #     df_exchange_rate[i] = round((df_exchange_rate[i] - df_exchange_rate[i].mean()) / df_exchange_rate[i] * 100, 2)
 
     qf = cf.QuantFig(
         df_exchange_rate,

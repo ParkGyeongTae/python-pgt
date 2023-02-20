@@ -16,7 +16,7 @@ if __name__ == '__main__':
     df_kospi = df_kospi[['Open', 'High', 'Low', 'Close']]
 
     # for i in df_kospi.columns:
-    #     df_kospi[i] = round((df_kospi[i] - (df_kospi[i].sum() / len(df_kospi))) / df_kospi[i] * 100, 2)
+    #     df_kospi[i] = round((df_kospi[i] - df_kospi[i].mean()) / df_kospi[i] * 100, 2)
 
     qf = cf.QuantFig(
         df_kospi,

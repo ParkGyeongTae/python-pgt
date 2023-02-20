@@ -23,7 +23,7 @@ if __name__ == '__main__':
     df_samsung_elec = df_samsung_elec[['Open', 'High', 'Low', 'Close']]
 
     # for i in df_samsung_elec.columns:
-    #     df_samsung_elec[i] = round((df_samsung_elec[i] - (df_samsung_elec[i].sum() / len(df_samsung_elec))) / df_samsung_elec[i] * 100, 2)
+    #     df_samsung_elec[i] = round((df_samsung_elec[i] - df_samsung_elec[i].mean()) / df_samsung_elec[i] * 100, 2)
 
     qf = cf.QuantFig(
         df_samsung_elec,

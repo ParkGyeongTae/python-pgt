@@ -18,7 +18,7 @@ if __name__ == '__main__':
     df_kosdaq = df_kosdaq[['Open', 'High', 'Low', 'Close']]
 
     # for i in df_kosdaq.columns:
-    #     df_kosdaq[i] = round((df_kosdaq[i] - (df_kosdaq[i].sum() / len(df_kosdaq))) / df_kosdaq[i] * 100, 2)
+    #     df_kosdaq[i] = round((df_kosdaq[i] - df_kosdaq[i].mean()) / df_kosdaq[i] * 100, 2)
 
     qf = cf.QuantFig(
         df_kosdaq,
