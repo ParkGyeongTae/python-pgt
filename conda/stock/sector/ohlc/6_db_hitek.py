@@ -22,8 +22,8 @@ if __name__ == '__main__':
     df_db_hitek = fdr.DataReader(symbol = get_stock_code('DB하이텍'), start = before_standard)
     df_db_hitek = df_db_hitek[['Open', 'High', 'Low', 'Close']]
 
-    for i in df_db_hitek.columns:
-        df_db_hitek[i] = round((df_db_hitek[i] - df_db_hitek[i].mean()) / df_db_hitek[i] * 100, 2)
+    # for i in df_db_hitek.columns:
+    #     df_db_hitek[i] = round((df_db_hitek[i] - df_db_hitek[i].mean()) / df_db_hitek[i] * 100, 2)
 
     qf = cf.QuantFig(
         df_db_hitek,
