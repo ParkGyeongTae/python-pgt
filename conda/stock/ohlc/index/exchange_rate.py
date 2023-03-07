@@ -13,13 +13,13 @@ from dateutil.relativedelta import relativedelta
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 4)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
     df = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)
     df = df[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
         df, 
-        title = '환율(4 Years)', 
+        title = '환율(3 Years)', 
         legend = 'top', 
         name = '환율', 
         up_color = 'red', 

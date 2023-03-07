@@ -11,13 +11,13 @@ from dateutil.relativedelta import relativedelta
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 4)).strftime('%Y-%m-%d')
+    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
     df = fdr.DataReader(symbol = 'KS11', start = before_standard)
     df = df[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
         df, 
-        title = 'KOSPI(4 Years)', 
+        title = 'KOSPI(3 Years)', 
         legend = 'top', 
         name = 'KOSPI', 
         up_color = 'red', 

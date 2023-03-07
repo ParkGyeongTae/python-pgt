@@ -18,15 +18,15 @@ def get_stock_code(name):
 
 if __name__ == '__main__':
 
-    before_standard = (datetime.now() - relativedelta(years = 4)).strftime('%Y-%m-%d')
-    df = fdr.DataReader(symbol = get_stock_code('엘앤에프'), start = before_standard)
+    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
+    df = fdr.DataReader(symbol = get_stock_code('JYP Ent.'), start = before_standard)
     df = df[['Open', 'High', 'Low', 'Close']]
 
     qf = cf.QuantFig(
         df, 
-        title = '엘앤에프(4 Years)', 
+        title = 'JYP Ent.(3 Years)', 
         legend = 'top', 
-        name = '엘앤에프', 
+        name = 'JYP Ent.', 
         up_color = 'red', 
         down_color = 'blue')
 
