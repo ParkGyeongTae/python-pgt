@@ -15,7 +15,7 @@ class OhlcChart():
         self.graph_type = graph_type
         self.symbol_name = symbol_name
         self.data_name = stock_name
-        self.title_name = f"{self.stock_name}({self.period} Years)"
+        self.title_name = f"{self.stock_name} ({self.period} Years)"
 
     def _get_stock_code(self):
         df = fdr.StockListing("KRX")

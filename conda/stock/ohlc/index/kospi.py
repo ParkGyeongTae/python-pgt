@@ -6,6 +6,6 @@ from main.ohlc_chart import OhlcChart
 
 if __name__ == "__main__":
     chart_settings = OhlcChart(None, 3, "ohlcv", "KS11")
-    chart_settings.title_name = '코스피 (3 Years)'
-    chart_settings.data_name = '코스피'
+    chart_settings.title_name = "코스피 (3 Years)"
+    chart_settings.data_name = "코스피"
     chart_settings.get_chart_ohlcv()
