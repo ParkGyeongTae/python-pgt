@@ -14,3 +14,7 @@
 # - 환율 데이터 : USD/KRX(원달러 환율), USD/EUR(달러당 유로화 환율), CNY/KRX(위완화 원화 환율)
 
 # source /Users/pgt0409/opt/anaconda3/bin/activate stock
+
+# '''
+# pip install pandas,beautifulsoup4,finance-datareader,matplotlib,cufflinks,chart_studio -y
+# '''

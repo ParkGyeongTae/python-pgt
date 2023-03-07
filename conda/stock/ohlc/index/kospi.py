@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
     df = fdr.DataReader(symbol = 'KS11', start = before_standard)
-    df = df[['Open', 'High', 'Low', 'Close']]
+    df = df[['Open', 'High', 'Low', 'Close', 'Volume']]
 
     qf = cf.QuantFig(
         df, 
@@ -22,5 +22,6 @@ if __name__ == '__main__':
         name = 'KOSPI', 
         up_color = 'red', 
         down_color = 'blue')
+    qf.add_volume()
 
     plyo.iplot(qf.iplot(asFigure = True))
