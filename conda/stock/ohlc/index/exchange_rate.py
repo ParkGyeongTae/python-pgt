@@ -1,28 +1,8 @@
-'''
-pip install pandas,beautifulsoup4,finance-datareader,matplotlib,cufflinks,chart_studio -y
-'''
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-import FinanceDataReader as fdr
-import cufflinks as cf
-import plotly.offline as plyo
-import pandas as pd
-# import matplotlib.pyplot as plt
+from main.ohlc_chart import OhlcChart
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-
-if __name__ == '__main__':
-
-    before_standard = (datetime.now() - relativedelta(years = 3)).strftime('%Y-%m-%d')
-    df = fdr.DataReader(symbol = 'USD/KRW', start = before_standard)
-    df = df[['Open', 'High', 'Low', 'Close']]
-
-    qf = cf.QuantFig(
-        df, 
-        title = '환율(3 Years)', 
-        legend = 'top', 
-        name = '환율', 
-        up_color = 'red', 
-        down_color = 'blue')
-
-    plyo.iplot(qf.iplot(asFigure = True))
+if __name__ == "__main__":
+    OhlcChart(None, 3, "ohlc", "USD/KRW").get_chart_ohlcv()
