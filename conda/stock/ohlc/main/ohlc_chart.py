@@ -16,11 +16,18 @@ class OhlcChart():
         self.symbol_name = symbol_name
         self.data_name = stock_name
         self.title_name = f"{self.stock_name} ({self.period} Years)"
+        self.ohlc_type = ["Open", "High", "Low", "Close"]
+        self.ohlcv_type = ["Open", "High", "Low", "Close", "Volume"]
 
     def _get_stock_code(self):
         df = fdr.StockListing("KRX")
         stock_code = df[df["Name"] == self.stock_name]["Code"].to_string(index = False)
         return stock_code
+
+    def _get_df_preprocessing(self, df):
+        for item in self.ohlc_type:
+            df = df[df[item] != 0]
+        return df
 
     def get_chart_ohlcv(self):
         before_standard = (datetime.now() - relativedelta(years = self.period)).strftime("%Y-%m-%d")
@@ -33,7 +40,7 @@ class OhlcChart():
             pass
 
         if self.graph_type == "ohlcv":
-            df = df[["Open", "High", "Low", "Close", "Volume"]]
+            df = self._get_df_preprocessing(df[self.ohlcv_type])
             qf = cf.QuantFig(
                 df, 
                 title = self.title_name, 
@@ -44,7 +51,7 @@ class OhlcChart():
             qf.add_volume()
             plyo.iplot(qf.iplot(asFigure = True))
         elif self.graph_type == "ohlc":
-            df = df[["Open", "High", "Low", "Close"]]
+            df = df = self._get_df_preprocessing(df[self.ohlc_type])
             qf = cf.QuantFig(
                 df, 
                 title = self.title_name, 
@@ -55,6 +62,3 @@ class OhlcChart():
             plyo.iplot(qf.iplot(asFigure = True))
         else:
             pass
-
-        # return plyo.iplot(qf.iplot(asFigure = True))
-
