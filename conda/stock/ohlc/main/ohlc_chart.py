@@ -34,14 +34,12 @@ class OhlcChart():
 
     def get_chart_ohlcv(self):
         before_standard = (datetime.now() - relativedelta(years = self.period)).strftime("%Y-%m-%d")
-
         if self.stock_name is not None:
             df = fdr.DataReader(symbol = self._get_stock_code(), start = before_standard)
         elif self.stock_name is None:
             df = fdr.DataReader(symbol = self.symbol_name, start = before_standard)
         else:
             pass
-
         if self.graph_type == "ohlcv":
             df = self._get_df_preprocessing(df[self.ohlcv_type])
             qf = cf.QuantFig(
