@@ -53,7 +53,6 @@ class OhlcChart():
                 down_color = self.down_color
             )
             qf.add_volume()
-            # plyo.iplot(qf.iplot(asFigure = True))
         elif self.graph_type == "ohlc":
             df = df = self._get_df_preprocessing(df[self.ohlc_type])
             qf = cf.QuantFig(
@@ -64,7 +63,6 @@ class OhlcChart():
                 up_color = self.up_color, 
                 down_color = self.down_color
             )
-            # plyo.iplot(qf.iplot(asFigure = True))
         else:
             pass
         plyo.iplot(qf.iplot(asFigure = True))
