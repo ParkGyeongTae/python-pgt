@@ -11,7 +11,8 @@
 - conda activate pyspark
 
 4. 라이브러리 설치하기
-- conda install -c conda-forge pyspark==3.3.1 -y
+- conda install -c conda-forge pyspark==3.3.2 -y
+- pip install pep8==1.7.1, pycodestyle==2.10.0
 
 5. 가상환경 지우기
 - conda env remove -n pyspark
