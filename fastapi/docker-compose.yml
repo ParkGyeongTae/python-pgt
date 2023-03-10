@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  fastapi:
+    image: ${PYTHON_IMAGE_NAME}:${PYTHON_IMAGE_VERSION}
+    hostname: fastapi
+    container_name: fastapi
+    stdin_open: true
+    # volumes:
+    #   - type: bind
+    #     source: ./code
+    #     target: /code
+    #     read_only: false
+    #   - type: bind
+    #     source: ./result
+    #     target: /result
+    #     read_only: false
