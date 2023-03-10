@@ -6,7 +6,9 @@ services:
     image: ${PYTHON_IMAGE_NAME}:${PYTHON_IMAGE_VERSION}
     hostname: fastapi
     container_name: fastapi
-    stdin_open: true
+    ports:
+      - 8080:8080
+    # stdin_open: true
     # volumes:
     #   - type: bind
     #     source: ./code
