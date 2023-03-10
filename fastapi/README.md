@@ -11,7 +11,8 @@
 - conda activate fastapi
 
 4. 라이브러리 설치하기
-- pip install fastapi==0.93.0, uvicorn[standard]==0.21.0 -y
+- conda install -c conda-forge fastapi
+- conda install -c conda-forge uvicorn-standard
 
 5. 가상환경 지우기
 - conda env remove -n fastapi
