@@ -15,3 +15,6 @@
 
 5. 가상환경 지우기
 - conda env remove -n pyspark
+
+6. 참고
+- source /Users/pgt0409/opt/anaconda3/bin/activate stock
