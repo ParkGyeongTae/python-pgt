@@ -14,6 +14,7 @@ class ModelName(str, Enum):
     summary = "Summary",
     description = "Description",
     tags = ["Tags"],
+    name = 'ddd'
 )
 async def read_price(item_name: ModelName):
     if item_name is ModelName.icecream:
@@ -25,3 +26,20 @@ async def read_price(item_name: ModelName):
     else:
         pass
     return {"item_name": item_name, "price": price}
+
+# @app.get(
+#     path = "/item/price",
+#     summary = "Summary",
+#     description = "Description",
+#     tags = ["Tags"],
+#     name = 'ddd'
+# )
+# async def read_price(item_name: ModelName):
+#     if item_name is ModelName.icecream:
+#         return {"item_name": item_name, "price": 3000}
+#     elif item_name is ModelName.snack:
+#         return {"item_name": item_name, "price": 5000}
+#     elif item_name is ModelName.chocolate:
+#         return {"item_name": item_name, "price": 7000}
+#     else:
+#         pass
