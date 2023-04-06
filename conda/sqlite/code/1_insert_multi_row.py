@@ -3,12 +3,32 @@ import sqlite3
 con = sqlite3.connect(':memory:')
 
 cur = con.cursor()
-cur.execute("CREATE TABLE PhoneBook(Name text, PhoneNum text);")
-cur.execute("INSERT INTO PhoneBook Values('Derick', '010-1234-5678');")
-cur.execute("SELECT * FROM PhoneBook;")
+
+cur.execute("""
+CREATE TABLE my_test_table(id int, name varchar, phone_number varchar);
+""")
+
+cur.execute("""
+INSERT INTO my_test_table Values (1, 'Park', '010-0000-0000');
+INSERT INTO my_test_table Values (2, 'Kim', '010-1234-5678');
+""")
+
+# cur.execute("""
+# INSERT INTO my_test_table Values (2, 'Kim', '010-1234-5678');
+# """)
+
+cur.execute("""
+SELECT * FROM my_test_table;
+""")
 
 for row in cur:
     print(row)
+
+
+# dataList = (('Tom', '010-543-5432'), ('DSP', '010-123-1234'))
+# cur = con.cursor()
+# cur.executemany("INSERT INTO PhoneBook VALUES(?, ?);", dataList)
+
 
 # print([row for row in cur])
 
