@@ -1,7 +1,7 @@
 # python-pgt
 
 ## conda 연결
-### source /Users/pgt0409/opt/anaconda3/bin/activate <가상환경 이름>
+### source /Users/pgt0409/opt/anaconda3/bin/activate
 
 ## 리스트 조회
 ### conda info --envs
