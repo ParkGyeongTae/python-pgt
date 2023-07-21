@@ -1,20 +1,20 @@
 # python-pgt
 
-### conda info --envs || conda env list
-### conda env remove -n stock
-### conda create -n stock python==3.8 -y
-### conda activate stock
+## 아나콘다 가상환경 리스트
+* conda info --envs
+* conda env list
 
-### conda install -c conda-forge pandas==1.5.3 -y
-### conda install -c conda-forge beautifulsoup4==4.11.1 -y
-### pip install -U finance-datareader==0.9.50 -y
-### pip install Jinja2==3.1.2
+## 아나콘다 가상환경 지우기
+* conda env remove -n py311
 
-# - 각종 지수 : KS11(코스피 지수), KQ11(코스닥 지수), DJI(다우 지수), IXIC(나스닥 지수), US500(S&P5000)
-# - 환율 데이터 : USD/KRX(원달러 환율), USD/EUR(달러당 유로화 환율), CNY/KRX(위완화 원화 환율)
+## 아나콘다 가상환경 만들기
+* conda create -n py311 python==3.11 -y
 
-# source /Users/pgt0409/opt/anaconda3/bin/activate stock
+## 아나콘다 가상환경 실행
+* conda activate py311
 
-# '''
-# pip install pandas,beautifulsoup4,finance-datareader,matplotlib,cufflinks,chart_studio -y
-# '''
+## 현재 폴더에서 사용하는 라이브러리
+* empty
+
+## 아나콘다 명령어 사용하기
+* source /Users/pgt0409/opt/anaconda3/bin/activate stock
