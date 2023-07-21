@@ -17,4 +17,4 @@
 * empty
 
 ## 아나콘다 명령어 사용하기
-* source /Users/pgt0409/opt/anaconda3/bin/activate stock
+* source /Users/pgt0409/opt/anaconda3/bin/activate base
