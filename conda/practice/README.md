@@ -14,7 +14,7 @@
 * conda activate py311
 
 ## 현재 폴더에서 사용하는 라이브러리
-* empty
+* pip install -r requirements.txt
 
 ## 아나콘다 명령어 사용하기
 * source /Users/pgt0409/opt/anaconda3/bin/activate base
