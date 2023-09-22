@@ -1,2 +1,4 @@
 docker/result/*
 __pycache__
+postgres_data
+pgadmin_data
