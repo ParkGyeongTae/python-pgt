@@ -9,4 +9,4 @@ for _l1 in enumerate(temp_list):
 for index, value in enumerate(temp_list):
     if index == 1:
         value += " gyeongtae"
-    print(f"index: {index}, value: {value}")
+    print(f"index: {index}, value: {value}f")
